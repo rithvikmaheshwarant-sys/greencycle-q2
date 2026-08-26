@@ -1,13 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Bricolage_Grotesque, Inter } from 'next/font/google'
+import { Inter, Bricolage_Grotesque } from 'next/font/google'
 import './globals.css'
-
-const bricolage = Bricolage_Grotesque({
-  subsets: ['latin'],
-  variable: '--font-bricolage',
-  display: 'swap',
-})
 
 const inter = Inter({
   subsets: ['latin'],
@@ -15,10 +9,16 @@ const inter = Inter({
   display: 'swap',
 })
 
+const bricolage = Bricolage_Grotesque({
+  subsets: ['latin'],
+  variable: '--font-bricolage',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
-  title: 'GreenCycle — Recycling made effortless',
+  title: 'GreenCycle | Cleaner Communities & Sustainable Recycling',
   description:
-    'GreenCycle helps homes and businesses recycle smarter with pickup scheduling, sorting guidance, and measurable impact.',
+    'GreenCycle is a community recycling movement in Tamil Nadu. Families, schools and businesses donate recyclable waste, partner with trusted NGOs, and watch real progress unfold.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -42,8 +42,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   colorScheme: 'light dark',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
+    { media: '(prefers-color-scheme: light)', color: '#f4f7ef' },
+    { media: '(prefers-color-scheme: dark)', color: '#111f18' },
   ],
 }
 
@@ -53,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${bricolage.variable} ${inter.variable} bg-background`}>
+    <html lang="en" className={`${inter.variable} ${bricolage.variable} bg-background`}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

@@ -1,45 +1,77 @@
-import Image from "next/image"
-import { ArrowRight, Leaf } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import Image from 'next/image'
+import { ArrowRight, Leaf, MapPin } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+
+const heroStats = [
+  { value: '12,480', label: 'people joined' },
+  { value: '3,150', label: 'donations made' },
+  { value: '86,200 kg', label: 'cleaner streets' },
+]
 
 export function Hero() {
   return (
-    <section className="mx-auto max-w-6xl px-6 pt-16 pb-20 md:pt-24">
-      <div className="grid items-center gap-12 lg:grid-cols-2">
-        <div className="flex flex-col items-start gap-6">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
-            <Leaf className="h-3.5 w-3.5" aria-hidden="true" />
-            Recycling made effortless
+    <section id="top" className="relative overflow-hidden">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
+        <div>
+          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
+            <MapPin className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
+            Tamil Nadu &middot; Community Recycling
           </span>
-          <h1 className="text-balance font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
-            Turn everyday waste into everyday wins
+
+          <h1 className="mt-5 text-balance font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+            Make India <span className="text-primary">greener</span>, one donation at a time.
           </h1>
-          <p className="max-w-md text-pretty text-lg leading-relaxed text-muted-foreground">
-            GreenCycle picks up your recycling, sorts it right, and shows you the real impact — for homes and businesses
-            that want to do better without the guesswork.
+
+          <p className="mt-5 max-w-lg text-pretty text-lg leading-relaxed text-muted-foreground">
+            Join a vibrant movement where families, schools, and businesses donate recyclable waste,
+            partner with trusted NGOs, and watch real progress unfold in their community.
           </p>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <Button size="lg" asChild>
-              <a href="#get-started">
-                Schedule a pickup
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </a>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <a href="#how-it-works">See how it works</a>
-            </Button>
+
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Button size="lg" render={<a href="#donate">Start donating</a>} />
+            <Button
+              variant="outline"
+              size="lg"
+              render={
+                <a href="#partners">
+                  Meet partners
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+              }
+            />
           </div>
+
+          <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-border pt-6">
+            {heroStats.map((stat) => (
+              <div key={stat.label}>
+                <dt className="sr-only">{stat.label}</dt>
+                <dd className="font-display text-2xl font-bold tracking-tight sm:text-3xl">{stat.value}</dd>
+                <p className="mt-1 text-xs text-muted-foreground sm:text-sm">{stat.label}</p>
+              </div>
+            ))}
+          </dl>
         </div>
 
-        <div className="relative overflow-hidden rounded-3xl border border-border">
-          <Image
-            src="/images/greencycle-hero.png"
-            alt="Neatly sorted recycling materials arranged on a light background"
-            width={720}
-            height={720}
-            className="h-full w-full object-cover"
-            priority
-          />
+        <div className="relative">
+          <div className="relative overflow-hidden rounded-3xl border border-border shadow-2xl shadow-primary/10">
+            <Image
+              src="/images/greencycle-hero.png"
+              alt="Community volunteers sorting recyclables into color-coded bins at a neighborhood recycling drive in Tamil Nadu"
+              width={1200}
+              height={1000}
+              priority
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="absolute -bottom-5 -left-5 flex items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-xl">
+            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent text-accent-foreground">
+              <Leaf className="h-6 w-6" aria-hidden="true" />
+            </span>
+            <div>
+              <p className="font-display text-sm font-bold leading-tight">Zero waste, brighter futures</p>
+              <p className="text-xs text-muted-foreground">A greener India begins with each small action.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
