@@ -4,7 +4,7 @@ import { ImpactStats } from "@/components/impact-stats"
 
 import { DonationZone } from "@/components/donation-zone"
 import { EcoCalculator } from "@/components/eco-calculator"
-import { FAQ } from "@/components/faq"
+import { Faq } from "@/components/faq"
 import { Partners } from "@/components/partners"
 
 import { CTA } from "@/components/cta"
@@ -41,7 +41,7 @@ export default function Home() {
         </section>
 
         <section id="faq">
-          <FAQ />
+          <Faq />
         </section>
 
         <CTA />
